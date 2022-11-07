@@ -30,6 +30,7 @@ namespace singly_linked_list
             node newnode = new node();
             newnode.rollNumber = rollNo;
             newnode.name = nm;
+            //if the node to be interested is the first node
             if(START != null || (rollNo == START.rollNumber))
             {
                 if ((START != null) &&(rollNo == START.rollNumber))
@@ -41,6 +42,22 @@ namespace singly_linked_list
                 START = newnode;
                 return;
             }
+
+            node previous, current;
+            previous = START;
+            current = START;
+            while ((current != null)&&(rollNo >= current.rollNumber))
+            {
+                if(rollNo == current.rollNumber)
+                {
+                    Console.WriteLine();
+                    return;
+                }
+                previous.next = current;
+                previous.next = newnode;
+            }
+            newnode.next = current;
+            previous.next = newnode;
         }
     }
 

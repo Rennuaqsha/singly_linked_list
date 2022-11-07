@@ -64,7 +64,7 @@ namespace singly_linked_list
         {
             node previous, current;
             previous = current = null;
-            if(Search(rollNo, ref previous, ref current)== false)
+            if(search(rollNo, ref previous, ref current)== false)
                 return false;
             previous.next = current.next;
             if (current == START)
@@ -72,7 +72,22 @@ namespace singly_linked_list
             return true;
         }
 
-       
+        public bool search(int rollNo, ref node previous,ref node current)
+        {
+            previous = current;
+            current = current.next;
+            while ((current != null)&&(rollNo != current.rollNumber))
+            {
+                previous = current;
+                current = current.next;
+            }
+            if(current == null)
+                return false;
+            else
+                return true;
+        }
+
+        
     }
 
     class program

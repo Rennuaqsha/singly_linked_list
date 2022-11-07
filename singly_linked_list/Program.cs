@@ -87,7 +87,13 @@ namespace singly_linked_list
                 return true;
         }
 
-        
+        public void Traverse()
+        {
+            if (listEmpty())
+                Console.WriteLine("\nThe records in the list are: ");
+            else
+            
+        }
     }
 
     class program

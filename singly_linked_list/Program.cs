@@ -158,6 +158,28 @@ namespace singly_linked_list
                             }
                             break;
 
+                        case '4':
+                            {
+                                if(obj.listEmpty() == true)
+                                {
+                                    Console.WriteLine("\nList is empty");
+                                    break;
+                                }
+                                node previous, current;
+                                previous = current = null;
+                                Console.Write("\nEnter the roll number of the " + "Student whose record to be searched: ");
+                                int num = Convert.ToInt32(Console.ReadLine());
+                                if (obj.search(num, ref previous, ref current) == false)
+                                    Console.WriteLine("\nRecord Not Found");
+                                else
+                                {
+                                    Console.WriteLine("\nrecord not found");
+                                    Console.WriteLine("\nRoll number: " + current.rollNumber);
+                                    Console.WriteLine("\nName:" + current.name);
+                                }
+                            }
+                            break;
+
                        
 
                     }

@@ -3,23 +3,23 @@
 namespace singly_linked_list
 {
     //each node consist of the information part and link to the next node
-    class node
-    {
-        public int rollNumber;
-        public string name;
-        public node next;
+    class node //ini adalah class node yang berguna untuk blueprint atau cetakan untuk membuat suatu objek 
+    {   // kelas public berarti variabel yang digunakan diluar kelas atau kelas lainnya.
+        public int rollNumber; // ini variabel yang berupa integer, berguna untuk mengisi data angka 
+        public string name; // variabel ini berupa tipe data string yang digunakan untuk mengisi data huruf 
+        public node next; // ini adalah objek yang dibuat didalam code dangan nama next berguna untuk lanjut ke simpul berikutnya
     }
 
     class list
     {
-        node START; 
+        node START;  
 
-        public list()
+        public list() // kleas public list jika memulai maka akan membersihkan yang ada di sebelumnya 
         {
             START = null;
         }
 
-        public void addNote()
+        public void addNote() // method viod yang berguna untuk menambahkan data
         {
             int rollNo;
             string nm;
@@ -27,11 +27,12 @@ namespace singly_linked_list
             rollNo = Convert.ToInt32(Console.ReadLine());
             Console.Write("\n Enter the roll number of the student: ");
             nm = Console.ReadLine();
+            //memasukkan data sesuai yang dibutuhkan code untuk diinput
             node newnode = new node();
             newnode.rollNumber = rollNo;
             newnode.name = nm;
-            //if the node to be interested is the first node
-            if(START != null || (rollNo == START.rollNumber))
+            //jika node yang akan tertarik adalah node pertama
+            if (START != null || (rollNo == START.rollNumber))
             {
                 if ((START != null) &&(rollNo == START.rollNumber))
                 {
@@ -42,7 +43,7 @@ namespace singly_linked_list
                 START = newnode;
                 return;
             }
-
+            //jika data yang dimasukkan kedalam node berada diantara 2 node 
             node previous, current;
             previous = START;
             current = START;
@@ -60,6 +61,7 @@ namespace singly_linked_list
             previous.next = newnode;
         }
 
+        //method yang berguna unutk menghapus data yang dimasukkan 
         public bool delnode(int rollNo)
         {
             node previous, current;
@@ -72,6 +74,7 @@ namespace singly_linked_list
             return true;
         }
 
+        // sedangkan method search berguna untuk mencari data yang dimasukkan
         public bool search(int rollNo, ref node previous,ref node current)
         {
             previous = current;
@@ -87,6 +90,7 @@ namespace singly_linked_list
                 return true;
         }
 
+        //mmethod yang berguna untuk menelusuri list yang telah dibuat 
         public void Traverse()
         {
             if (listEmpty())
@@ -102,6 +106,7 @@ namespace singly_linked_list
             }
         }
 
+        //method yang berguna untuk memastikan kekosongan data 
         public bool listEmpty()
         {
             if (START == null)
@@ -111,7 +116,7 @@ namespace singly_linked_list
         }
     }
 
-    class program
+    class program // class ini berguna untuk menjalankan program dari data yang dibuat diclass sebelumnya
     {
         static void Main(String[] args)
         {
@@ -127,18 +132,18 @@ namespace singly_linked_list
                     Console.WriteLine("4. Search for a record in the list");
                     Console.WriteLine("5. Exit");
                     Console.Write("\n Enter your choice (1-5) : ");
-                    char ch = Convert.ToChar(Console.ReadLine());
+                    char ch = Convert.ToChar(Console.ReadLine()); // berguna untuk menerima input dari pengguna untuk memilih menu yang ada
                     switch (ch)
                     {
                         case '1':
                             {
-                                obj.addNote();
+                                obj.addNote(); // memanggil objek dan methodnya yang telah dibuat sebelumnya 
                             }
                             break;
 
                         case '2':
                             {
-                                if(obj.listEmpty())
+                                if(obj.listEmpty()) //memanggil objek dan methodnya
                                 {
                                     Console.WriteLine("\nList is empty");
                                     break;
@@ -180,11 +185,11 @@ namespace singly_linked_list
                             }
                             break;
 
-                        case '5':
+                        case '5': //berguna jika memasukkan data yang salah yang seharusnya tidak dibutuhkan maka program akan gagal
                             return;
                         default:
                             {
-                                Console.WriteLine("\nInvalid Option");
+                                Console.WriteLine("\nInvalid Option"); 
                                 break;
                             }
 
